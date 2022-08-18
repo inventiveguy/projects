@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topPanelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/yellow_dark"
+            app:layout_constraintBottom_toTopOf="@+id/middlePanelLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textStandBy"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:text="@string/hint_stand_by"
+                android:textAllCaps="true"
+                android:theme="@style/heading_text_style"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutPanelMode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.442"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.478">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textNoVentDelivered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="@string/hint_no_vent_del"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_9sdp"
+                    android:theme="@style/main_heading_text_style" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textDelivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="@string/hint_delivery"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_9sdp"
+                    android:theme="@style/main_heading_text_style" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textModeType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/_15sdp"
+                    android:theme="@style/heading_text_style"
+                    android:visibility="gone" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:text="@string/hint_timer"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_30sdp"
+                android:theme="@style/subheading_text_style"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.751"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.527" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/mainInfoPanel"
+                android:layout_width="320dp"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="0dp"
+                android:background="@color/black"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/existinglabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/white"
+                    android:text="Existing Mode" />
+
+                <TextView
+                    android:id="@+id/checkMode"
+                    android:layout_marginTop="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="35dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:text="Mode Name" />
+
+                <LinearLayout
+                    android:id="@+id/subLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:paddingTop="@dimen/_1sdp"
+                    android:orientation="horizontal"
+                    >
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/border"
+                        android:gravity="center"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/batteryStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_battery"
+                            android:layout_weight="1"
+                            />
+                        <!--
+                                                android:foreground="@drawable/ic_battery"
+                                                android:background="@android:color/transparent"
+                        -->
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="0dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/border"
+                        android:gravity="center">
+
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/powerStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_plug_in" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/middlePanelLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topPanelLayout">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/LeftLayoutPanel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_60sdp"
+                android:layout_weight="0.5"
+                android:gravity="end|center_vertical"
+                android:orientation="vertical"
+                android:padding="0dp">
+
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonModes"
+                    android:layout_width="match_parent"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:text="@string/hint_mode"
+                    android:textSize="@dimen/_7sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonControls"
+                    android:layout_width="match_parent"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:background="@color/light_grey"
+                    android:text="@string/hint_controls"
+                    android:textSize="@dimen/_7sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonPreopCheck"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:background="@color/light_grey"
+                    android:text="@string/hint_preop_check"
+                    android:textSize="@dimen/_6sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/knob_nav_contain"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="@dimen/_1sdp"
+                    android:layout_marginLeft="@dimen/_1sdp"
+                    android:layout_marginEnd="@dimen/_1sdp"
+                    android:background="@color/grey"
+                    android:visibility="gone" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/layoutPanelMiddle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/layoutPanelGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/buttonNeonatal"
+                    app:layout_constraintTop_toBottomOf="@+id/buttonAdultPed">
+
+                    <include
+                        android:id="@+id/includeMale"
+                        layout="@layout/content_male_layout"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp" />
+
+                    <include
+                        android:id="@+id/includeFemale"
+                        layout="@layout/content_female_layout"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutPanelPatientHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:text="@string/hint_patientHeight"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style_unit" />
+
+                        <include
+                            android:id="@+id/includeProgressHeight"
+                            layout="@layout/knob_progress_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_minus10sdp"
+                            android:gravity="center"
+                            android:text="cms"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutPanelPatientAge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17sp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:text="@string/hint_patientAge"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style_unit" />
+
+
+                        <include
+                            android:id="@+id/includeProgressAge"
+                            layout="@layout/knob_progress_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/age"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_minus10sdp"
+                            android:gravity="center"
+                            android:text="years"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/layoutPanelPatientWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:gravity="center"
+                            android:text="@string/hint_patientWeight"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style_unit" />
+
+                        <include
+
+                            android:id="@+id/includeProgressWeight"
+                            layout="@layout/knob_progress_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_minus10sdp"
+                            android:gravity="center"
+                            android:text="kg"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:theme="@style/subheading_text_style" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <com.akexorcist.roundcornerprogressbar.indeterminate.IndeterminateRoundCornerProgressBar
+                    android:id="@+id/progressIndicator"
+                    android:layout_width="510dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:visibility="invisible"
+                    app:rcAnimationSpeedScale="3"
+                    app:rcBackgroundColor="@color/white"
+                    app:rcProgressColor="@color/light_grey" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    android:id="@+id/buttonStartExistingVentilation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:background="@color/light_grey"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_1sdp"
+                    android:text="@string/hint_start_existing_ventilation"
+                    android:textSize="@dimen/_6sdp"
+                    android:textStyle="bold"
+                    android:theme="@style/subheading_text_style_graph" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonStartNewVentilation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginBottom="@dimen/_1sdp"
+                    android:text="@string/hint_start_new_ventilation"
+                    android:textSize="@dimen/_6sdp"
+                    android:textStyle="bold"
+                    android:background="@color/light_grey"
+                    android:theme="@style/subheading_text_style_graph" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_60sdp"
+                android:layout_weight="0.5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonAdult"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:background="@color/light_grey"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:text="@string/hint_adult"
+                    android:textSize="@dimen/_7sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonPediatric"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:background="@color/light_grey"
+                    android:text="@string/hint_ped"
+                    android:textSize="@dimen/_7sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonNeonatal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:background="@color/light_grey"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:text="@string/hint_neonatal"
+                    android:textSize="@dimen/_7sdp"
+                    android:theme="@style/subheading_text_style_unit" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</FrameLayout>

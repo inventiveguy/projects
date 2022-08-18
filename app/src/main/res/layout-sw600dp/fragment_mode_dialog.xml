@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayoutPanel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dolphin_grey">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageViewCross"
+        android:layout_width="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:layout_marginVertical="@dimen/_14sdp"
+        android:src="@drawable/ic_cross_grey"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <!-- VOLUME CONTROLLED VENTILATION -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewVolumeControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:text="@string/hint_volume_controlled"
+            android:textStyle="bold"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintBottom_toTopOf="@+id/layoutVolumePressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textAllCaps="true" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutVolumePressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textViewPressureControl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewVolumeControl">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonVcCmv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_vc_cmv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonVcSimv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_vc_simv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAcv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_vc_cv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!-- PRESSURE CONTROLLED VENTILATION -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewPressureControl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_pressure_controlled"
+            android:textStyle="bold"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintBottom_toTopOf="@+id/layoutPressureControl"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutVolumePressure"
+            app:textAllCaps="true" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutPressureControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textViewIntelligentVentilation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPressureControl">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPcCmv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_pc_cmv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPcSimv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_pc_imv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPcac"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_9sdp"
+                android:paddingEnd="@dimen/_9sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_spont"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonPsv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingEnd="@dimen/_13sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_psv"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAprv"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_12sdp"
+                android:paddingEnd="@dimen/_12sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_pc_aprv"
+                android:visibility="gone"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!-- INTELLIGENT VENTILATION -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewIntelligentVentilation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_intelligent_ventilation"
+            android:textStyle="bold"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintBottom_toTopOf="@+id/layoutIntelligentVentilation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPressureControl"
+            app:textAllCaps="true" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutIntelligentVentilation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/textViewSpontaneous"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewIntelligentVentilation">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAIVent"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_ai_vent"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!-- NON INVASIVE VENTILATION -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSpontaneous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_spontaneous"
+            android:textStyle="bold"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintBottom_toTopOf="@+id/layoutNoninvasive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutIntelligentVentilation"
+            app:textAllCaps="true" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layoutNoninvasive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSpontaneous">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonBpap"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingEnd="@dimen/_13sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_bpap"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonCpap"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_margin="@dimen/_2sdp"
+                android:background="@drawable/background_primary_btn_rounded"
+                android:paddingStart="@dimen/_13sdp"
+                android:paddingEnd="@dimen/_13sdp"
+                android:stateListAnimator="@null"
+                android:text="@string/hint_cpap"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:theme="@style/button_normal_style"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <include
+            android:id="@+id/includeButtonCancel"
+            layout="@layout/content_button_layout"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/background_dark_grey"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/includeButtonConfirm" />
+
+        <include
+            android:id="@+id/includeButtonConfirm"
+            layout="@layout/content_button_layout"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_18sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/background_light_grey_border"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_grey_border_white">
+
+    <include
+        android:id="@+id/includeButtonInfo1"
+        layout="@layout/content_button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/includeButtonInfo2"
+        layout="@layout/content_button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeButtonInfo1" />
+
+    <include
+        android:id="@+id/includeButtonInfo3"
+        layout="@layout/content_button_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/includeButtonInfo2" />
+
+
+    <FrameLayout
+        android:id="@+id/infoViewContainer"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/includeButtonInfo1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info1Layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_grey_border_white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/includeButtonInfo1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSerialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_serial_number"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewSerialNumberData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_model"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSerialNumber" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewModelData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSerialNumberData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_soft_version"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewModel" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewVersionData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewModelData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewOperatingHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_hard_version"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewVersion" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewOperatingHoursData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewVersionData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewHoursSinceStartup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_hours_since_startup"
+            android:theme="@style/subheading_text_style"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOperatingHours" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewHoursSinceStartupData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewOperatingHoursData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTimeToService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_time_to_service"
+            android:theme="@style/subheading_text_style"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHoursSinceStartup" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewTimeToServiceData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:cursorVisible="false"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewHoursSinceStartupData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBattery1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_battery_level"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTimeToService" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBattery1Data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTimeToServiceData" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBatteryHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_battery_health"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBattery1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBatteryHealthData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBattery1Data" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBatteryRemTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="@string/hint_battery_rem_time"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBatteryHealth" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewBatteryRemTimeData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewSerialNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewBatteryHealthData" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/info2Layout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/background_grey_border_white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/includeButtonInfo1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewCommunicationBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_communication_board"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewCommunicationBoardData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewCommunicationBoard"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewIntelliCuff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_intelli_cuff"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCommunicationBoard" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewIntelliCuffData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewCommunicationBoard"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCommunicationBoardData" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAgVaHealthcare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="@string/hint_agva_healthcare"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewIntelliCuff" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewAgVaHealthcareData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:text="---"
+            android:theme="@style/subheading_text_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewAgVaHealthcare"
+            app:layout_constraintTop_toBottomOf="@+id/textViewIntelliCuffData" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+
+        <include
+            android:visibility="visible"
+            android:id="@+id/includeButtonShutDown"
+            layout="@layout/content_button_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/layoutSettingsToggle"
+        android:orientation="horizontal"
+        android:paddingStart="25dp"
+        android:paddingEnd="64dp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/ic_info_icon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/filter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:gravity="center|start"
+            android:textColor="@color/offblack"
+            android:textSize="@dimen/_4sdp"
+            android:text="@string/battery_usage_disclaimer"
+            android:theme="@style/subheading_text_style_graph" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

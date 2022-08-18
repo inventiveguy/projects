@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <com.scichart.charting.visuals.SciChartSurface
+        android:id="@+id/chartSurface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textViewChartType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:alpha="0.6"
+        android:elevation="8dp"
+        android:padding="@dimen/_3sdp"
+        android:text="Pressure (cmH20)"
+        android:textColor="#CCFFFFFF"
+        android:textSize="@dimen/_4sdp"
+        android:theme="@style/subheading_text_style"
+        android:visibility="visible" />
+
+    <!--    <androidx.appcompat.widget.AppCompatSpinner-->
+    <!--        android:id="@+id/spinnerChartType"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="end|top"-->
+    <!--        android:background="#66D7D9DB"-->
+    <!--        android:popupBackground="#66D7D9DB"-->
+    <!--        android:popupElevation="10dp"-->
+    <!--        android:spinnerMode="dropdown"-->
+    <!--        android:overlapAnchor="false"-->
+    <!--        />-->
+
+
+</FrameLayout>

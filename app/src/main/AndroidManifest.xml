@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.agvahealthcare.ventilator_ext">
+    <!-- android:sharedUserId="android.uid.system"> -->
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- Logging permissions -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.DUMP" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+
+   <!-- <uses-permission android:name="anroid.permission.DUMP" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />-->
+
+    <application
+        android:name="com.agvahealthcare.ventilator_ext.VentilatorApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Ventilator_ext"
+        tools:replace="android:icon">
+        <activity
+            android:name="com.agvahealthcare.ventilator_ext.ShutDownActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.agvahealthcare.ventilator_ext.utility.utils.CircleProgressView"
+            android:exported="true" />
+        <activity
+            android:name="com.agvahealthcare.ventilator_ext.SplashActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.agvahealthcare.ventilator_ext.dashboard.DashBoardActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.agvahealthcare.ventilator_ext.MainActivity"
+            android:screenOrientation="landscape" />
+
+        <service
+            android:name="com.agvahealthcare.ventilator_ext.service.UsbService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.agvahealthcare.ventilator_ext.receiver.OnBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

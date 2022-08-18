@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!-- <androidx.recyclerview.widget.RecyclerView
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:id="@+id/rvDate" />-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvParameterConstants"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_160sdp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_160sdp"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/leftButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_1sdp"
+            android:background="@color/white"
+            android:rotation="180"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_logtable_righticon" />
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_margin="@dimen/_1sdp"
+            android:layout_weight="0.7"
+            android:backgroundTint="@android:color/transparent"
+            android:progress="1"
+            android:progressDrawable="@drawable/custom_seekbar"
+            android:secondaryProgressTint="@android:color/transparent"
+            android:thumb="@drawable/thumb" />
+
+        <ImageButton
+            android:id="@+id/rightButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_1sdp"
+            android:background="@color/white"
+            android:foregroundGravity="center"
+            android:src="@drawable/ic_logtable_righticon" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_seekbarvalue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

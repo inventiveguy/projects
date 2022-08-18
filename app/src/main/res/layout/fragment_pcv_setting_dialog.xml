@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/background_rounded_graph"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_3sdp"
+                android:text="@string/hint_setting_of_pcv"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:theme="@style/subheading_text_style" />
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageViewCross"
+                    android:layout_width="@dimen/_12sdp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end|center"
+                    android:padding="@dimen/_1sdp"
+                    android:src="@drawable/ic_cross" />
+
+            </FrameLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--//ToDo: Change the background wrt android:background="@color/white"
+-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_2sdp"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="652dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:padding="@dimen/_4sdp"
+                app:srcCompat="@drawable/icgraph" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTtot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/titot"
+                android:theme="@style/subheading_text_style_graph" />
+
+            <!--changes made for the new graph
+                previous changes recorded
+                android:layout_marginTop="@dimen/_21sdp"
+                android:layout_gravity="center|top"
+            -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTinsp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_24sdp"
+                android:layout_marginTop="@dimen/_21sdp"
+                android:text="@string/inhale_time"
+                android:theme="@style/subheading_text_style_graph" />
+
+            <!--old code
+            android:layout_marginStart="@dimen/_20sdp"-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTexp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|top"
+                android:layout_marginTop="@dimen/_21sdp"
+                android:layout_marginEnd="@dimen/_83sdp"
+                android:text="@string/inhale_time"
+                android:theme="@style/subheading_text_style_graph" />
+
+            <!--  <androidx.appcompat.widget.AppCompatTextView
+                  android:id="@+id/textViewSlope"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/slope"
+                  android:layout_marginTop="@dimen/_17sdp"
+                  android:layout_marginStart="@dimen/_16sdp"
+                  android:theme="@style/subheading_text_style_graph"/>
+  -->
+            <!--previous values that can be done
+            android:layout_marginTop="@dimen/_34sdp"
+            android:layout_marginStart="@dimen/_16sdp"-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_13sdp"
+                android:text="@string/ps"
+                android:textAllCaps="true"
+                android:theme="@style/subheading_text_style_graph" />
+            <!--previous values
+            android:layout_marginTop="@dimen/_46sdp"
+            android:layout_marginStart="@dimen/_10sdp"-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPeepPi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:text="@string/pi"
+                android:textSize="@dimen/_3sdp"
+                android:theme="@style/subheading_text_style_graph" />
+
+            <!--
+                        previous values
+                        android:layout_marginTop="@dimen/_58sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+            -->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewPeepPiSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:text="@string/pinsp"
+                android:textAllCaps="true"
+                android:theme="@style/subheading_text_style_graph" />
+            <!--New added textview for the I:E Ratio-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewIERatio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:text="@string/ieratio"
+                android:textAllCaps="true"
+                android:textSize="@dimen/_3sdp"
+                android:theme="@style/subheading_text_style_graph" />
+            <!--New added textview for the TRIG.E Ratio-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textViewTrigERatio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_33sdp"
+                android:text="@string/trig_exp"
+                android:textAllCaps="true"
+                android:theme="@style/subheading_text_style_graph" />
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
