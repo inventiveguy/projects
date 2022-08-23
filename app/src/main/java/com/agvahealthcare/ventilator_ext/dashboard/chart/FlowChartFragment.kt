@@ -23,6 +23,7 @@ import com.scichart.charting.visuals.axes.IAxis
 import com.scichart.charting.visuals.renderableSeries.IRenderableSeries
 import com.scichart.core.framework.UpdateSuspender
 import com.scichart.data.model.DoubleRange
+import com.scichart.drawing.common.FontStyle
 import com.scichart.drawing.common.SolidPenStyle
 import com.scichart.drawing.utility.ColorUtil
 import kotlinx.android.synthetic.main.fragment_chart.*
@@ -53,6 +54,7 @@ class FlowChartFragment private constructor(type: GraphType) : GraphFragment(typ
     private var whichTrace = TraceArc.TraceA
     private var minValue: Int? = 0
     private var maxValue: Int? = 0
+    val titleStyle = FontStyle(14.0f, ColorUtil.White)
 
 
     override fun onCreateView(
@@ -81,12 +83,14 @@ class FlowChartFragment private constructor(type: GraphType) : GraphFragment(typ
         val xPrimaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, GRAPH_THRESHOLD.toDouble()))
             .withAutoRangeMode(AutoRange.Never)
+            .withTickLabelStyle(titleStyle)
             .withAxisId("Visible Axis")
             .withMaxAutoTicks(10)
             .build()
         val xSecondaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, 12.0))
             .withAutoRangeMode(AutoRange.Never)
+            .withTickLabelStyle(titleStyle)
             .withAxisId("Hidden XAxis")
             .withMaxAutoTicks(8)
             .build()
@@ -95,6 +99,7 @@ class FlowChartFragment private constructor(type: GraphType) : GraphFragment(typ
             .withAxisAlignment(AxisAlignment.Left)
             .withVisibleRange(minValue?.toDouble()!!, maxValue?.toDouble()!!)
             .withMaxAutoTicks(5)
+            .withTickLabelStyle(titleStyle)
             .withAutoRangeMode(AutoRange.Never)
             .build()
 

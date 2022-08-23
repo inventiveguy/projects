@@ -34,6 +34,7 @@ import com.scichart.core.IServiceContainer
 import com.scichart.core.common.Size
 import com.scichart.core.framework.UpdateSuspender
 import com.scichart.data.model.DoubleRange
+import com.scichart.drawing.common.FontStyle
 import com.scichart.drawing.utility.ColorUtil
 import kotlinx.android.synthetic.main.fragment_chart.*
 import java.util.*
@@ -41,7 +42,7 @@ import java.util.*
 class PressureVolumeChartFragment private constructor(type: GraphType): GraphFragment(type) {
 
     private lateinit var dataSeries: IXyDataSeries<Float, Float>
-
+    val titleStyle = FontStyle(14.0f, ColorUtil.White)
     companion object {
         const val TAG = "PressureVolumeChartFragment"
 
@@ -81,6 +82,8 @@ class PressureVolumeChartFragment private constructor(type: GraphType): GraphFra
         val xAxis: IAxis = sciChartBuilder.newNumericAxis().withAxisAlignment(AxisAlignment.Bottom)
             .withIsCenterAxis(false).withVisibleRange(DoubleRange(GRAPH_VOLUME_MIN.toDouble(), GRAPH_VOLUME_MAX.toDouble()))
             .withMaxAutoTicks(20)
+            .withTickLabelStyle(titleStyle)
+            .withDrawMajorGridLines(false)
             .withAutoRangeMode(AutoRange.Never).build()
 
         val yAxis: IAxis = sciChartBuilder.newNumericAxis().withAxisAlignment(AxisAlignment.Left)
@@ -88,14 +91,16 @@ class PressureVolumeChartFragment private constructor(type: GraphType): GraphFra
             .withIsCenterAxis(false).withVisibleRange(DoubleRange(GRAPH_PRESSURE_MIN.toDouble(),
                 GRAPH_PRESSURE_MAX.toDouble()))
             .withMaxAutoTicks(8)
+            .withTickLabelStyle(titleStyle)
+            .withDrawMajorGridLines(false)
             .withAutoRangeMode(AutoRange.Never).build()
 
         xAxis.drawMajorGridLines = false
         xAxis.drawMinorGridLines = false
         xAxis.drawMajorBands = false
         xAxis.drawMajorTicks = false
-        xAxis.drawMinorTicks = false
 
+        xAxis.drawMinorTicks = false
         yAxis.drawMajorGridLines = false
         yAxis.drawMinorGridLines = false
         yAxis.drawMajorBands = false
@@ -106,6 +111,7 @@ class PressureVolumeChartFragment private constructor(type: GraphType): GraphFra
         chartSurface.isVerticalFadingEdgeEnabled=false
         chartSurface.isClickable=false
         chartSurface.renderableSeriesAreaBorderStyle = sciChartBuilder.newPen().withColor(ColorUtil.Transparent).build()
+
 //        chartSurface.isHorizontalScrollBarEnabled=false
 //        chartSurface.isVerticalFadingEdgeEnabled=false
 //        chartSurface.isClickable=false

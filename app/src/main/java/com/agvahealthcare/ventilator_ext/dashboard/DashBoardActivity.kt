@@ -958,12 +958,12 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
                             val lbl = it[pos].ventKey
                             val unit = it[pos].units
 
-
                             it.filter { it.ventKey == lbl }
                                 .takeIf { it.isNotEmpty() }
                                 ?.getOrNull(0)
                                 ?.apply {
-                                    this.reading = supportPrecision(lbl, newValue)
+                                   // this.reading = if(isDecimalSupported) String.format("%.1f", newValue) else newValue.toInt().toString()
+                                       this.reading = supportPrecision(lbl, newValue)
                                 }
 
 
@@ -979,6 +979,7 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
                         it.isIsselected = false
                     }
 
+
                     standbyControlFragment?.notifyParameterAdapter()
                     Log.i("STANDBYCONTROL_CHECK", "ARR[$pos] -> $${parameterList[pos].reading}")
 
@@ -987,6 +988,7 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
                    // normaliseParameterTiles()
 
                 }
+
             },
             onLimitChangeListener = object: OnLimitChangeListener{
                 override fun onLimitChange(
@@ -994,7 +996,7 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
                     newValue: Float
                 ) {
                     parameterList.getOrNull(pos)?.let { param ->
-                        Log.i("ValueUpdates",newValue.toString())
+                        Log.i("ValueUpdates","ARR[$pos] -> $${parameterList[pos].reading}" + newValue.toString())
                         val model = standbyControlFragment?.updateParameterValue(param.ventKey, newValue.toString(), type)
                        // ToastFactory.custom(ctx,newValue.toString())
 
@@ -3710,6 +3712,7 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
 
         standbyControlFragment?.let {
             prefManager?.apply {
+                Log.i("PRefValues","Check Values on View")
                 it.updateBasicParameterValue(LBL_PEEP, readPEEP().toInt().toString())
                 //it.updateBasicParameterValue(LBL_TRIG_FLOW, readTrigFlow().toInt().toString())
                 it.updateBasicParameterValue(LBL_PPLAT, readPplat().toInt().toString())
@@ -3737,6 +3740,7 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
     }
 
     private fun renderControlParameterTilesViaPreference() {
+
         prefManager?.apply {
             updateVentParameterValue(LBL_PEEP, readPEEP().toInt().toString())
             updateVentParameterValue(LBL_TRIG_FLOW, readTrigFlow().toInt().toString())
@@ -5901,7 +5905,14 @@ class DashBoardActivity : BaseLockActivity(), OnGraphSelectListener, OnDismissDi
             }
         }
 
-        override fun onStateChange(isActive: Boolean, type: ControlSettingType) {}
+        override fun onStateChange(isActive: Boolean, type: ControlSettingType) {
+            Log.i("IRVMODE_CHECK", "Toggle state changed to " + isActive)
+            if(type == ControlSettingType.ADVANCED) {
+                Log.i("IRVMODE_CHECK", "In Backup Toggle state changed to " + isActive)
+                prefManager?.setIRVStatus(isActive)
+
+            }
+        }
 
     }
 

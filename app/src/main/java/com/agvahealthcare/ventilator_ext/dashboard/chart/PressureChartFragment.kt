@@ -10,19 +10,21 @@ import androidx.core.content.ContextCompat
 import com.agvahealthcare.ventilator_ext.R
 import com.agvahealthcare.ventilator_ext.callback.OnChartSwapListener
 import com.agvahealthcare.ventilator_ext.dashboard.TraceArc
-import com.agvahealthcare.ventilator_ext.dashboard.chart.paletteprovider.ColouredLinePaletteProvider
 import com.agvahealthcare.ventilator_ext.manager.PreferenceManager
-import com.agvahealthcare.ventilator_ext.utility.*
+import com.agvahealthcare.ventilator_ext.utility.FIFO_CAPACITY
+import com.agvahealthcare.ventilator_ext.utility.GRAPH_THRESHOLD
+import com.agvahealthcare.ventilator_ext.utility.KEY_MAX_VALUE_VIEW
+import com.agvahealthcare.ventilator_ext.utility.KEY_MIN_VALUE_VIEW
 import com.scichart.charting.model.dataSeries.IXyDataSeries
 import com.scichart.charting.visuals.annotations.AnnotationCoordinateMode
 import com.scichart.charting.visuals.annotations.HorizontalLineAnnotation
 import com.scichart.charting.visuals.axes.AutoRange
 import com.scichart.charting.visuals.axes.AxisAlignment
 import com.scichart.charting.visuals.axes.IAxis
-
 import com.scichart.charting.visuals.renderableSeries.IRenderableSeries
 import com.scichart.core.framework.UpdateSuspender
 import com.scichart.data.model.DoubleRange
+import com.scichart.drawing.common.FontStyle
 import com.scichart.drawing.common.SolidPenStyle
 import com.scichart.drawing.utility.ColorUtil
 import kotlinx.android.synthetic.main.fragment_chart.*
@@ -64,6 +66,7 @@ class PressureChartFragment private constructor(type: GraphType): GraphFragment(
     private var cc: ColourContainer? = null
     private var prefManager: PreferenceManager? = null
     var horizontalLineAnnotation:HorizontalLineAnnotation? = null
+    val titleStyle = FontStyle(14.0f, ColorUtil.White)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -106,12 +109,14 @@ class PressureChartFragment private constructor(type: GraphType): GraphFragment(
         val xPRimaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, GRAPH_THRESHOLD.toDouble()))
             .withMaxAutoTicks(4)
+            .withTickLabelStyle(titleStyle)
             .withAxisId("Visible Axis")
             .withAutoRangeMode(AutoRange.Never)
             .build()
 
         val xsecondaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, 12.0))
+            .withTickLabelStyle(titleStyle)
             .withMaxAutoTicks(8)
             .withAxisId("HiddenXAxis")
             .withAutoRangeMode(AutoRange.Never)
@@ -121,12 +126,13 @@ class PressureChartFragment private constructor(type: GraphType): GraphFragment(
             .withAxisAlignment(AxisAlignment.Left)
             .withVisibleRange(minValue?.toDouble()!!, maxValue?.toDouble()!!)
             .withMaxAutoTicks(3)
+            .withTickLabelStyle(titleStyle)
             .withAutoRangeMode(AutoRange.Never)
             .build()
 
 
         chartSurface.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black))
-        chartSurface.renderableSeriesAreaBorderStyle = sciChartBuilder.newPen().withColor(ColorUtil.Grey).build();
+        chartSurface.renderableSeriesAreaBorderStyle = sciChartBuilder.newPen().withColor(ColorUtil.Transparent).build();
         xPRimaryAxis.visibility = View.GONE
         xsecondaryAxis.visibility = View.VISIBLE
 
@@ -162,20 +168,14 @@ class PressureChartFragment private constructor(type: GraphType): GraphFragment(
 
         val rs1: IRenderableSeries = sciChartBuilder.newLineSeries()
             .withStrokeStyle(sciChartBuilder.newPen().withColor(ColorUtil.White).withThickness(1f).build())
-            .withDataSeries(dataSeries0)
+
             .withXAxisId("Visible Axis")
-            .apply {
-                cc?.let { this.withPaletteProvider(ColouredLinePaletteProvider(horizontalLineAnnotation!!)) }
-            }
             .build()
 
         val rs2: IRenderableSeries = sciChartBuilder.newLineSeries()
             .withStrokeStyle(sciChartBuilder.newPen().withColor(ColorUtil.White).withThickness(1f).build())
             .withDataSeries(dataSeries1)
             .withXAxisId("Visible Axis")
-            .apply {
-                cc?.let { this.withPaletteProvider(ColouredLinePaletteProvider(horizontalLineAnnotation!!)) }
-            }
             .build()
 
         // draw desired border using LineAnnotation

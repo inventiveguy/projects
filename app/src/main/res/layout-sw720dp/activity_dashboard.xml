@@ -506,7 +506,7 @@
                             android:id="@+id/uhidView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="UHID2345678"
+                            android:text="UHID 2345678"
                             android:textColor="@color/white" />
 
                         <TextView

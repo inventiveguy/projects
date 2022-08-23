@@ -71,7 +71,7 @@ class SensorsFragment : Fragment() {
 
         prefManager?.apply {
             if(readSensorLowO2() == Configs.SENSOR_AVAILABLE){
-                tvLowPressureO2SensorStatus.text= getString(R.string.hint_active)
+                //tvLowPressureO2SensorStatus.text= getString(R.string.hint_active)
                 ivLowPressureO2Sensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
                 tvLowPressureO2SensorStatus.text= getString(R.string.hint_inactive)
@@ -80,16 +80,16 @@ class SensorsFragment : Fragment() {
             }
 
             if(readSensorHighO2() == Configs.SENSOR_AVAILABLE){
-                tvHighPressureO2SensorStatus.text= getString(R.string.hint_active)
+               // tvHighPressureO2SensorStatus.text= getString(R.string.hint_active)
                 ivHighPressureO2Sensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
-                tvHighPressureO2SensorStatus.text= getString(R.string.hint_inactive)
+              //  tvHighPressureO2SensorStatus.text= getString(R.string.hint_inactive)
                 ivHighPressureO2Sensor.setImageResource(R.drawable.ic_red_cross)
 
             }
 
             if(readSensorCO2() == Configs.SENSOR_AVAILABLE){
-                tvCo2SensorStatus.text= getString(R.string.hint_active)
+               // tvCo2SensorStatus.text= getString(R.string.hint_active)
                 ivC02Sensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
                 tvCo2SensorStatus.text= getString(R.string.hint_inactive)
@@ -98,19 +98,19 @@ class SensorsFragment : Fragment() {
             }
 
             if(readSensorSPO2() == Configs.SENSOR_AVAILABLE){
-                tvSpo2SensorStatus.text= getString(R.string.hint_active)
+               // tvSpo2SensorStatus.text= getString(R.string.hint_active)
                 ivSP02Sensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
-                tvSpo2SensorStatus.text= getString(R.string.hint_inactive)
+              //  tvSpo2SensorStatus.text= getString(R.string.hint_inactive)
                 ivSP02Sensor.setImageResource(R.drawable.ic_red_cross)
 
             }
 
             if(readSensorTemp() == Configs.SENSOR_AVAILABLE){
-                tvTempSensorStatus.text= getString(R.string.hint_active)
+               // tvTempSensorStatus.text= getString(R.string.hint_active)
                 ivTempSensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
-                tvTempSensorStatus.text= getString(R.string.hint_inactive)
+               // tvTempSensorStatus.text= getString(R.string.hint_inactive)
                 ivTempSensor.setImageResource(R.drawable.ic_red_cross)
 
             }
@@ -119,16 +119,16 @@ class SensorsFragment : Fragment() {
               //  tvInhaleFlowSensorStatus.text= getString(R.string.hint_active)
                 ivInhaleFlowSensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
-                tvInhaleFlowSensorStatus.text= getString(R.string.hint_inactive)
+              //  tvInhaleFlowSensorStatus.text= getString(R.string.hint_inactive)
                 ivInhaleFlowSensor.setImageResource(R.drawable.ic_red_cross)
 
             }
 
             if(readSensorExhaleFlow() == Configs.SENSOR_AVAILABLE){
-                tvExhaleFlowSensorStatus.text= getString(R.string.hint_active)
+              //  tvExhaleFlowSensorStatus.text= getString(R.string.hint_active)
                 ivExhaleFlowSensor.setImageResource(R.drawable.ic_green_circle_tick)
             }else{
-                tvExhaleFlowSensorStatus.text= getString(R.string.hint_inactive)
+              //  tvExhaleFlowSensorStatus.text= getString(R.string.hint_inactive)
                 ivExhaleFlowSensor.setImageResource(R.drawable.ic_red_cross)
 
             }

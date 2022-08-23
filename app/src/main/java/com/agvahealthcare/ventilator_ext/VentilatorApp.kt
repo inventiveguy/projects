@@ -23,7 +23,6 @@ class VentilatorApp : Application() {
         }
 
 
-
     }
 
     override fun onCreate() {
@@ -48,7 +47,7 @@ class VentilatorApp : Application() {
             Log.e("VERSION_CHECK", "Unable to fetch the version name from gradle file")
             e.printStackTrace()
         }
-        SystemMonitor.start()
+      //  SystemMonitor.start()
     }
 
 
@@ -63,9 +62,7 @@ class VentilatorApp : Application() {
         }
 
     }
-
     override fun onTerminate() {
-        SystemMonitor.stop()
         super.onTerminate()
 
     }

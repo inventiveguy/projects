@@ -16,7 +16,10 @@ import com.agvahealthcare.ventilator_ext.callback.OnKnobPressListener
 import com.agvahealthcare.ventilator_ext.callback.OnLimitChangeListener
 import com.agvahealthcare.ventilator_ext.utility.utils.Configs.*
 import com.agvahealthcare.ventilator_ext.R
+import com.agvahealthcare.ventilator_ext.manager.PreferenceManager
+import com.agvahealthcare.ventilator_ext.utility.utils.Configs
 import kotlinx.android.synthetic.main.progress_dialog_view.view.*
+import java.lang.Error
 
 class KnobDialog : DialogFragment() {
 
@@ -33,6 +36,8 @@ class KnobDialog : DialogFragment() {
     private var currentValue: Float = 0f
     private var actualValue: Int = 0
     public var cancelableStatus: Boolean = false;
+
+    private var prefManager: PreferenceManager? = null
 
 
     companion object {
@@ -72,6 +77,7 @@ class KnobDialog : DialogFragment() {
 
     init {
         Log.i("KNOBDIALOGCHECK", "Created knob dialog")
+
     }
     var visibilityTimeout:CountDownTimer? =null
     override fun onCreateView(
@@ -79,6 +85,7 @@ class KnobDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        prefManager = PreferenceManager(requireContext());
         return inflater.inflate(R.layout.progress_dialog_view, container, false)
     }
 
@@ -170,7 +177,6 @@ class KnobDialog : DialogFragment() {
 
         cancelTimeout()
 
-
         visibilityTimeout = object: CountDownTimer(10000, 2000) {
             override fun onTick(millisUntilFinished: Long) {
                 Log.i("DEBOUNCEKNOBCHECK", "Debounce timeout completed knob runing")
@@ -196,19 +202,43 @@ class KnobDialog : DialogFragment() {
         }
     }
 
+    private fun isIRVActive() = prefManager?.readIRVStatus() ?: false
+
+    private fun getIERatioLimits() : Pair<Int, Int>{
+        val max = requireContext().getString(R.string.max_ie_ratio).toInt();
+        val min = requireContext().getString( if(isIRVActive()) R.string.min_ie_ratio_irv else  R.string.min_ie_ratio).toInt();
+        return Pair<Int, Int>(min, max);
+    }
+
+    private fun isIERatioValid(): Boolean{
+        val rr = if(parameterModel.key == LBL_RR) currentValue.toInt() else prefManager?.readRR()?.toInt()
+        val tinsp = if(parameterModel.key == LBL_TINSP) currentValue else prefManager?.readTinsp()
+
+        if(rr != null && tinsp != null) {
+            val (minIERatio, maxIERatio) = getIERatioLimits()
+            val calculatedIERatio = Configs.calculateIERatio(rr, tinsp)
+            return try {
+                val eiRatio = calculatedIERatio.split(":")[1].toInt()
+                eiRatio in minIERatio..maxIERatio
+            } catch (err: Error) {
+                Log.i("IE_CHECK", "IE Ratio verification failed")
+                false
+            }
+        } else return false
+    }
+
     private fun addition() {
         startTimeoutWithDebounce()
+        val newValue = floatingPointFix(currentValue + encoderValue.step)
+        var isNewValueValid = newValue <= encoderValue.upperLimit
+        if(parameterModel.key == LBL_TINSP || parameterModel.key == LBL_RR) isNewValueValid = isNewValueValid && isIERatioValid()
 
-
-        if (currentValue < encoderValue.upperLimit) {
+        if (isNewValueValid) {
 //            if (currentValue != encoderValue.upperLimit) {
-
-            currentValue = floatingPointFix(currentValue + encoderValue.step)
-
+            currentValue = newValue
             Log.i("CONTROLPARAMCHECK", "Increment = " + currentValue.toString() + " step = " + encoderValue.step)
 //            }
         }
-
         // display value
         val displayValue = if(isDecimalSupported(parameterModel.key))  String.format("%.1f", currentValue) else currentValue.toInt().toString()
         view?.textRange?.text = displayValue
@@ -227,9 +257,12 @@ class KnobDialog : DialogFragment() {
 
     private fun subtraction() {
         startTimeoutWithDebounce()
+        val newValue = floatingPointFix(currentValue - encoderValue.step)
+        var isNewValueValid = newValue >= lowerlimit
+        if(parameterModel.key == LBL_TINSP || parameterModel.key == LBL_RR) isNewValueValid = isNewValueValid && isIERatioValid()
 
-        if (currentValue > encoderValue.lowerLimit && currentValue <= encoderValue.upperLimit) {
-            if (currentValue > 0.0f) currentValue = floatingPointFix(currentValue - encoderValue.step)
+        if ( isNewValueValid) {
+            if (currentValue > 0.0f) currentValue = newValue // TODO : why > 0.0f
             Log.i("CONTROLPARAMCHECK", "Decrement = " + currentValue.toString() + " step = " + encoderValue.step)
         }
 

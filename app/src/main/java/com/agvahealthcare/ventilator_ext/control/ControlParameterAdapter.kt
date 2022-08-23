@@ -39,7 +39,7 @@ class ControlParameterAdapter(val ctx: Context,  modelList: ArrayList<ControlPar
     private var dataList : ArrayList<ControlParameterModel> = arrayListOf()
 
     init {
-        if(type == Configs.ControlSettingType.BACKUP) {
+        if(type == Configs.ControlSettingType.BACKUP || type == Configs.ControlSettingType.ADVANCED) {
             dataList.add(0, ControlParameterModel.empty())  // for backup settings toggle
         }
         dataList.addAll(modelList)
@@ -61,7 +61,7 @@ class ControlParameterAdapter(val ctx: Context,  modelList: ArrayList<ControlPar
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val tile = dataList[position]
         Log.i("PARAMETERADAPATER_CHECK", "Position = " + position);
-        if (type == Configs.ControlSettingType.BACKUP && tile.isEmpty){
+        if ((type == Configs.ControlSettingType.BACKUP || type == Configs.ControlSettingType.ADVANCED) && tile.isEmpty){
             (holder as ToggleVhControlParameterAdapter).tgButton?.setOnCheckedChangeListener {_, isChecked ->
                 controlParamClickListener?.onStateChange(isChecked, type)
             }
@@ -72,7 +72,7 @@ class ControlParameterAdapter(val ctx: Context,  modelList: ArrayList<ControlPar
            // tile.lowerLimit?.toInt()?.apply { (holder as VHControlParameterAdapter).circleProgressView?.min = this }
 
             (holder as VHControlParameterAdapter).mainLayoutPanel?.setOnClickListener {
-                controlParamClickListener?.onClick(if(type == Configs.ControlSettingType.BACKUP) position - 1 else position ,tile)
+                controlParamClickListener?.onClick(if(type == Configs.ControlSettingType.BACKUP || type == Configs.ControlSettingType.ADVANCED) position - 1 else position ,tile)
                 notifyItemChanged(position)
             }
 
@@ -88,7 +88,7 @@ class ControlParameterAdapter(val ctx: Context,  modelList: ArrayList<ControlPar
 
     }
 
-    override fun getItemViewType(position: Int): Int  = if (type == Configs.ControlSettingType.BACKUP && dataList.get(position).isEmpty) LAYOUT_BACKUP_VIEW else LAYOUT_DEFAULT_VIEW
+    override fun getItemViewType(position: Int): Int  = if ((type == Configs.ControlSettingType.BACKUP || type == Configs.ControlSettingType.ADVANCED) && dataList.get(position).isEmpty) LAYOUT_BACKUP_VIEW else LAYOUT_DEFAULT_VIEW
 
 //To Do for the change of the control parameter tiles.
 

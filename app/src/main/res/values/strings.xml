@@ -348,6 +348,10 @@
 
 
     <!--DATA CONFIGURATION SETTINGS-->
+
+    <string name="min_ie_ratio">1</string>
+    <string name="min_ie_ratio_irv">0.25</string>
+    <string name="max_ie_ratio">12</string>
     <!-- Suffix PED : Pediatric limits    -->
     <string name="default_inhale_time_auto">1.4</string>
 
@@ -362,8 +366,7 @@
     <string name="max_inhale_time_neonat">2</string>
     <string name="default_sensor">0</string>
 
-    <string name="min_ie_ratio">0.0</string>
-    <string name="max_ie_ratio">10.0</string>
+
 
     <string name="default_tlow">1.94</string>
     <string name="min_tlow">0.1</string>

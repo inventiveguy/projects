@@ -22,6 +22,7 @@ import com.scichart.charting.visuals.axes.IAxis
 import com.scichart.charting.visuals.renderableSeries.IRenderableSeries
 import com.scichart.core.framework.UpdateSuspender
 import com.scichart.data.model.DoubleRange
+import com.scichart.drawing.common.FontStyle
 import com.scichart.drawing.utility.ColorUtil
 import kotlinx.android.synthetic.main.fragment_chart.*
 import java.util.*
@@ -52,6 +53,7 @@ class VolumeChartFragment private constructor(type: GraphType): GraphFragment(ty
     private var whichTrace = TraceArc.TraceA
     private var minValue: Int? = 0
     private var maxValue: Int? = 0
+    val titleStyle = FontStyle(14.0f, ColorUtil.White)
 
 
 
@@ -80,6 +82,7 @@ class VolumeChartFragment private constructor(type: GraphType): GraphFragment(ty
         val xPrimaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, GRAPH_THRESHOLD.toDouble()))
             .withMaxAutoTicks(30)
+            .withTickLabelStyle(titleStyle)
             .withAxisId("Visible Axis")
             .withAutoRangeMode(AutoRange.Never)
             .build()
@@ -87,6 +90,7 @@ class VolumeChartFragment private constructor(type: GraphType): GraphFragment(ty
         val xSecondaryAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withVisibleRange(DoubleRange(0.0, 12.0))
             .withMaxAutoTicks(8)
+            .withTickLabelStyle(titleStyle)
             .withAxisId("HiddenXAxis")
             .withAutoRangeMode(AutoRange.Never)
             .build()
@@ -94,7 +98,8 @@ class VolumeChartFragment private constructor(type: GraphType): GraphFragment(ty
         val yAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withAxisAlignment(AxisAlignment.Left)
             .withVisibleRange(minValue?.toDouble()!!, maxValue?.toDouble()!!)
-            .withMaxAutoTicks(6)
+            .withMaxAutoTicks(3)
+            .withTickLabelStyle(titleStyle)
             .withAutoRangeMode(AutoRange.Never)
             .build()
 

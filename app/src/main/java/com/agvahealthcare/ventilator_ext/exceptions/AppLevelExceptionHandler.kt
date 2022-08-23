@@ -25,7 +25,7 @@ class AppLevelExceptionHandler : Thread.UncaughtExceptionHandler {
             Log.i("SERVERLOGGER-RAW", exception.stackTraceToString())
 
             //ServerLogger.e(it,exception)
-            FileLogger.e(it, exception)
+           // FileLogger.e(it, exception)
 
   //          ServerLogger.e(it,exception)
             try {

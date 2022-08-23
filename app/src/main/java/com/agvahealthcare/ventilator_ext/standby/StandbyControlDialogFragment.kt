@@ -226,6 +226,7 @@ class StandbyControlDialogFragment : DialogFragment() {
     private fun setUpAdvanced() {
 
         if(advancedControlParams?.isNotEmpty() == true){
+
             advancedControlParams?.let {
                 if(standbyAdvancedFragment == null) standbyAdvancedFragment = AdvancedFragment(ArrayList(it), advancedParameterClickListener)
                 standbyAdvancedFragment?.apply {

@@ -77,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -119,7 +118,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.5"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -161,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.5"
-                android:text="@string/hint_active"
+               />/ android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -203,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
+
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -244,7 +242,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -285,7 +282,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -327,7 +323,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
@@ -382,7 +377,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -420,7 +414,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="@string/hint_active"
                 android:theme="@style/normal_text_style" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>

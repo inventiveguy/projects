@@ -26,6 +26,7 @@ import com.scichart.core.IServiceContainer
 import com.scichart.core.common.Size
 import com.scichart.core.framework.UpdateSuspender
 import com.scichart.data.model.DoubleRange
+import com.scichart.drawing.common.FontStyle
 import com.scichart.drawing.common.SolidPenStyle
 import com.scichart.drawing.utility.ColorUtil
 import kotlinx.android.synthetic.main.fragment_chart.*
@@ -47,6 +48,7 @@ class FlowPressureChartFragment private constructor(type: GraphType): GraphFragm
         }
     }
     private lateinit var dataSeries: IXyDataSeries<Float, Float>
+    val titleStyle = FontStyle(14.0f, ColorUtil.White)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,6 +78,7 @@ class FlowPressureChartFragment private constructor(type: GraphType): GraphFragm
         val xAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withAxisAlignment(AxisAlignment.Bottom)
             .withIsCenterAxis(false)
+            .withTickLabelStyle(titleStyle)
             .withVisibleRange(DoubleRange(GRAPH_PRESSURE_MIN.toDouble(), 60.0))
             .withAutoRangeMode(AutoRange.Never)
             .withMaxAutoTicks(5)
@@ -84,7 +87,7 @@ class FlowPressureChartFragment private constructor(type: GraphType): GraphFragm
 
         val yAxis: IAxis = sciChartBuilder.newNumericAxis()
             .withAxisAlignment(AxisAlignment.Left)
-
+            .withTickLabelStyle(titleStyle)
             .withIsCenterAxis(false).withVisibleRange(DoubleRange(GRAPH_FLOW_MIN.toDouble(), GRAPH_FLOW_MAX.toDouble()))
             .withAutoRangeMode(AutoRange.Never).build()
 

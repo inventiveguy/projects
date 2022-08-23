@@ -120,6 +120,7 @@ public class PreferenceManager {
     private static final String PREF_CUFF_LEAKAGE_ALARM = "pref_cuff_leakage_alarm";
     private static final String PREF_ALARM_SUGGESTION = "pref_alarm_suggestion";
     private static final String PREF_LEAK_BASED_DISCONNECT = "pref_leak_based_disconnect";
+    private static final String PREF_IRV_STATUS = "pref_irv_status";
     private static final String PREF_VOLUME_LEVEL = "pref_volume_level";
     private static final String PREF_GRAPH_POINTS = "pref_graph_points";
     private static final String PREF_IS_PEDIATRIC_ACTIVE = "pref_is_pediatric_active";
@@ -1104,6 +1105,14 @@ public class PreferenceManager {
 
     public void setLeakBasedDisconnectionStatus(boolean state) {
         updateData(PREF_LEAK_BASED_DISCONNECT, state);
+    }
+
+    public boolean readIRVStatus(){
+        return sp.getBoolean(PREF_IRV_STATUS,false);
+    }
+
+    public void setIRVStatus(boolean isActive){
+        updateData(PREF_IRV_STATUS,isActive);
     }
 
     public boolean readLeakBasedAlarmStatus() {
